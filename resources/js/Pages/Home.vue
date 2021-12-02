@@ -11,6 +11,7 @@
 <script>
 import { ref, watch } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
+import debouce from 'lodash/debounce'
 import ShortPost from '../Shared/ShortPost.vue'
 import Paginate from '../Shared/Paginate.vue'
 export default {
@@ -27,12 +28,17 @@ export default {
         }
     },
     watch: {
-        search(newValue, oldValue) {
-            Inertia.get('/', { search: newValue }, {
+        search(newValue) {
+            this.searchPosts(newValue)
+        }
+    },
+    methods: {
+        searchPosts: debouce(function(string){
+            Inertia.get('/', { search: string }, {
                 preserveState: true,
                 replace: true
             })
-        }
+        }, 100)
     }
 }
 </script>
