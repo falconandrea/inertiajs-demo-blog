@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     public $fillable = [
-        'title',
-        'description'
+        'post_id',
+        'name',
+        'comment'
     ];
 
     public $casts = [
-        'created_at' => 'datetime:d/m/Y'
+        'created_at' => 'datetime:d/m/Y H:i'
     ];
 
-    public function comments()
+    public function post()
     {
-        return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
+        return $this->belongsTo(Post::class);
     }
 }

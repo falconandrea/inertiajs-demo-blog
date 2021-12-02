@@ -9,13 +9,22 @@
         <div class="py-6">
             {{ post.description }}
         </div>
+
+        <hr />
+        <h4 class="font-bold font-sans mt-4">Commenti:</h4>
+        <comment v-for="comment in comments" :key="comment.id" :comment="comment" />
     </div>
 </template>
 
 <script>
+import Comment from '../Shared/Comment.vue'
 export default {
+    components: {
+        Comment
+    },
     props: {
-        post: Object
+        post: Object,
+        comments: Array
     }
 }
 </script>

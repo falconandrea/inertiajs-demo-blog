@@ -15,8 +15,10 @@ class PostController extends Controller
 
     public function show($id)
     {
+        $post = Post::findOrFail($id);
         return inertia('Post', [
-            'post' => Post::findOrFail($id)
+            'post' => $post,
+            'comments' => $post->comments
         ]);
     }
 }
