@@ -7,7 +7,7 @@
             <p class="text-sm md:text-base font-normal text-gray-600">Published {{ post.format_date }}</p>
         </div>
         <p class="py-6">
-            {{ post.description }}
+            {{ post.intro }}
         </p>
     </div>
 </template>
