@@ -13,4 +13,8 @@ class Post extends Model
         'title',
         'description'
     ];
+
+    public $casts = [
+        'created_at' => 'datetime:d/m/Y'
+    ];
 }
