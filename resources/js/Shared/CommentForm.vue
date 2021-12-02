@@ -3,7 +3,7 @@
         <hr class="mt-6" />
         <h4 class="font-bold font-sans mt-4">Lascia un commento:</h4>
         <form @submit.prevent="submitForm">
-            <input type="hidden" name="post_id" v-model="formData.post_id" :value="postId" />
+            <input type="hidden" name="post_id" v-model="formData.post_id" />
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                     Nome
