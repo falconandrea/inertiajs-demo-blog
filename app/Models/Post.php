@@ -14,9 +14,12 @@ class Post extends Model
         'description'
     ];
 
-    public $casts = [
-        'created_at' => 'datetime:d/m/Y'
-    ];
+    public $appends = ['format_date'];
+
+    public function getFormatDateAttribute()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
 
     public function comments()
     {
