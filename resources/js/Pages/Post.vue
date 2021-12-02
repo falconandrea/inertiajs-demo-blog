@@ -10,17 +10,18 @@
             {{ post.description }}
         </div>
 
-        <hr />
-        <h4 class="font-bold font-sans mt-4">Commenti:</h4>
-        <comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+        <list-comments :comments="comments" />
+
+        <comment-form />
     </div>
 </template>
 
 <script>
-import Comment from '../Shared/Comment.vue'
+import CommentForm from '../Shared/CommentForm.vue'
+import ListComments from '../Shared/ListComments.vue'
 export default {
     components: {
-        Comment
+        CommentForm, ListComments
     },
     props: {
         post: Object,
