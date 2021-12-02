@@ -16,7 +16,7 @@
 
         <list-comments :comments="comments" />
 
-        <comment-form />
+        <comment-form :postId="post.id" />
     </div>
 </template>
 
