@@ -22,6 +22,11 @@ class PostController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return Inertia('NewPost');
+    }
+
     public function show($id)
     {
         $post = Post::findOrFail($id);
