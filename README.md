@@ -2,7 +2,16 @@
 
 # Info about the project
 
-A demo blog created with Laravel + Inertia.js.
+A demo blog created with Laravel + Inertia.js (Vue3).
+I used the TailwindCSS template found on the repository [Minimal Blog Template](https://github.com/tailwindtoolbox/Minimal-Blog) as the default layout.
+The new features have been added:
+
+-   pagination in the post list
+-   a search bar to filter
+-   login/logout for the admin
+-   form to insert new posts
+-   admin can update and delete posts
+-   guests can comment on a post
 
 ## Initial config with Sail
 
