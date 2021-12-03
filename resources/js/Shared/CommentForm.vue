@@ -8,38 +8,40 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                     Nome
                 </label>
-                <input v-model="formData.name" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Nome" required>
+                <input v-model="formData.name" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" required placeholder="Nome" />
+                <small v-if="formData.errors.name" v-text="formData.errors.name" class="text-red-500 text-xs mt-1"></small>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
                     Commento
                 </label>
-                <textarea v-model="formData.comment" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" name="comment" placeholder="Commento" required></textarea>
+                <textarea v-model="formData.comment" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" name="comment" required placeholder="Commento"></textarea>
+                <small v-if="formData.errors.comment" v-text="formData.errors.comment" class="text-red-500 text-xs mt-1"></small>
             </div>
             <div class="flex items-center justify-between">
-                <button class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" :disabled="formData.processing">
                     Invia
                 </button>
             </div>
         </form>
-        {{ formData }}
     </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
+import { useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
     postId: Number
 })
 
-let formData = reactive({
+let formData = useForm({
     name: '',
     comment: '',
     post_id: props.postId
 })
 let submitForm = () => {
-    Inertia.post('/comments', formData);
+    formData.post('/comments', formData, {
+        preserveScroll: (page) => Object.keys(page.props.errors).length
+    });
 }
 </script>
