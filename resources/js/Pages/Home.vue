@@ -8,7 +8,7 @@
             Benvenuto, {{ username }}
         </h6>
         <input type="text" v-model="search" name="search" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Cerca nei post.." />
-        <short-post v-for="post in posts.data" :key="post.id" :post="post"/>
+        <short-post v-for="post in posts.data" :key="post.id" :post="post" :logged="logged"/>
         <paginate :links="posts.links"/>
     </div>
 </template>
@@ -40,6 +40,9 @@ export default {
     computed: {
         username() {
             return (this.$page.props.auth && this.$page.props.auth.user) ? this.$page.props.auth.user.name : null
+        },
+        logged() {
+            return this.username ? true : false
         }
     },
     methods: {

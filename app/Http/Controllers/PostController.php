@@ -36,6 +36,14 @@ class PostController extends Controller
         ]);
     }
 
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return Inertia('EditPost', [
+            'post' => $post
+        ]);
+    }
+
     public function store(HttpRequest $request)
     {
         $data = $request->validate([
@@ -46,5 +54,29 @@ class PostController extends Controller
         $postId = Post::create($data);
 
         return redirect('/post/' . $postId['id']);
+    }
+
+    public function update(HttpRequest $request)
+    {
+        $data = $request->validate([
+            'title' => 'string|max:255|required',
+            'description' => 'required|string',
+            'post_id' => 'required|integer|exists:posts,id'
+        ]);
+
+        Post::findOrfail($data['post_id'])->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+        ]);
+
+        return redirect('/post/' . $data['post_id']);
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect('/');
     }
 }
