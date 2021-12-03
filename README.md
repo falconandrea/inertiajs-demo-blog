@@ -4,20 +4,33 @@
 
 A demo blog created with Laravel + Inertia.js.
 
-## Initial config
+## Initial config with Sail
 
 Follow the guide here [Start Laravel Project](https://github.com/falconandrea/start-laravel-project/blob/main/README.md)
 
 ## How to run
 
-After git clone, optional install Sail (if missing), copy and update .env file, run `sail up -d` and others commands in Initial Config guide.
-
 Install PHP dependencies and NPM dependencies with:
 
 ```
-sail composer install
-sail npm ci
-sail npm run dev
+composer install
+npm ci
+npm run dev
+```
+
+Copy .env.example in .env with
+
+```
+cp .env.example .env
+```
+
+and update data inside.
+
+After run Sail, run:
+
+```
+sail artisan key:generate
+sail artisan migrate
 ```
 
 Create the demo admin user with the seeder:
