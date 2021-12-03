@@ -8,6 +8,30 @@ A demo blog created with Laravel + Inertia.js.
 
 Follow the guide here [Start Laravel Project](https://github.com/falconandrea/start-laravel-project/blob/main/README.md)
 
+## How to run
+
+After git clone, optional install Sail (if missing), copy and update .env file, run `sail up -d` and others commands in Initial Config guide.
+
+Install PHP dependencies and NPM dependencies with:
+
+```
+sail composer install
+sail npm ci
+sail npm run dev
+```
+
+Create the demo admin user with the seeder:
+
+```
+sail artisan db:seed --class=FakeUserSeeder
+# Username: admin@admin.it
+# Password: password
+```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+```
+
+```
