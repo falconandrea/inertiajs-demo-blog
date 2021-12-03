@@ -3,7 +3,7 @@
         <hr />
         <h4 class="font-bold font-sans mt-4">Commenti:</h4>
         <div v-if="comments.length > 0">
-            <comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+            <comment v-for="comment in comments" :key="comment.id" :comment="comment" :logged="logged" />
         </div>
         <small v-if="comments.length <= 0">Attualmente non ci sono commenti</small>
     </div>
@@ -17,6 +17,11 @@ export default {
     },
     props: {
         comments: Array
+    },
+    computed: {
+        logged() {
+            return (this.$page.props.auth && this.$page.props.auth.user) ? true : false
+        }
     }
 }
 </script>

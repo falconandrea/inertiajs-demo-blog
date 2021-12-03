@@ -20,4 +20,12 @@ class CommentController extends Controller
 
         return redirect('/post/' . $data['post_id']);
     }
+
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect('/post/' . $comment->post->id);
+    }
 }

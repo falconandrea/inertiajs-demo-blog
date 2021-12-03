@@ -18,6 +18,7 @@ Route::post('/post', [PostController::class, 'store'])->middleware('auth');
 Route::delete('/post/{id}', [PostController::class, 'destroy'])->middleware('auth');
 
 Route::post('/comments', [CommentController::class, 'store']);
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
