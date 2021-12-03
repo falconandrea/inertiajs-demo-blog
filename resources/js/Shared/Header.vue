@@ -9,6 +9,7 @@
                 <nav>
                     <Link href="/about" class="text-gray-900 text-base hover:underline font-bold ml-4" :class="{ 'underline active': $page.url === '/about' }">About me</Link>
                     <Link v-if="!logged" href="/login" class="text-gray-900 text-base hover:underline font-bold ml-4" :class="{ 'underline active': $page.url === '/login' }">Login</Link>
+                    <Link v-if="logged" href="/post" class="text-gray-900 text-base hover:underline font-bold ml-4" :class="{ 'underline active': $page.url === '/post' }">New post</Link>
                     <Link v-if="logged" href="/logout" class="text-gray-900 text-base hover:underline font-bold ml-4" method="post" as="button" type="button">Logout</Link>
                 </nav>
 			</div>

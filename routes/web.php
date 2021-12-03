@@ -10,7 +10,12 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/about', function () {
     return Inertia('About');
 });
+Route::get('/post', function () {
+    return Inertia('NewPost');
+})->middleware('auth');
 Route::get('/post/{id}', [PostController::class, 'show']);
+Route::post('/post', [PostController::class, 'store'])->middleware('auth');
+
 Route::post('/comments', [CommentController::class, 'store']);
 
 Route::get('/login', [LoginController::class, 'create'])->name('login');
