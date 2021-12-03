@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-8">
+    <div class="mb-8 px-4">
         <h4 class="font-bold font-sans mt-4 mb-4">New post</h4>
         <form @submit.prevent="submitForm">
             <div class="mb-4">
