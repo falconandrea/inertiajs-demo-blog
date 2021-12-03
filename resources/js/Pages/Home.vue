@@ -5,9 +5,9 @@
     </Head>
     <div class="px-4">
         <h6 v-if="username" class="mb-4 font-bold">
-            Benvenuto, {{ username }}
+            Welcome, {{ username }}
         </h6>
-        <input type="text" v-model="search" name="search" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Cerca nei post.." />
+        <input type="text" v-model="search" name="search" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Search posts.." />
         <short-post v-for="post in posts.data" :key="post.id" :post="post" :logged="logged"/>
         <paginate :links="posts.links"/>
     </div>

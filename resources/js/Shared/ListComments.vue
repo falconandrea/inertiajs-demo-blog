@@ -1,11 +1,11 @@
 <template>
     <div>
         <hr />
-        <h4 class="font-bold font-sans mt-4">Commenti:</h4>
+        <h4 class="font-bold font-sans mt-4">Comments:</h4>
         <div v-if="comments.length > 0">
             <comment v-for="comment in comments" :key="comment.id" :comment="comment" :logged="logged" />
         </div>
-        <small v-if="comments.length <= 0">Attualmente non ci sono commenti</small>
+        <small v-if="comments.length <= 0">Currently there are no comments</small>
     </div>
 </template>
 
