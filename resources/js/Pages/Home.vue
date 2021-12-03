@@ -3,6 +3,9 @@
         <title>Home</title>
         <meta name="description" content="This is the Blog Homepage" head-key="description" />
     </Head>
+    <h6 v-if="username" class="mb-4 font-bold">
+        Benvenuto, {{ username }}
+    </h6>
     <input type="text" v-model="search" name="search" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Cerca nei post.." />
     <short-post v-for="post in posts.data" :key="post.id" :post="post"/>
     <paginate :links="posts.links"/>
@@ -30,6 +33,11 @@ export default {
     watch: {
         search(newValue) {
             this.searchPosts(newValue)
+        }
+    },
+    computed: {
+        username() {
+            return (this.$page.props.auth && this.$page.props.auth.user) ? this.$page.props.auth.user.name : null
         }
     },
     methods: {
